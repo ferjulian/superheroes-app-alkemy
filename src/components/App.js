@@ -4,7 +4,7 @@ import Home from './Home';
 import Login from './Login';
 import Search from './Search';
 import Details from './Details';
-import Prueba from './Prueba';
+import PrivateRoute from './PrivateRoute';
 
 const App = () =>{
     return(
@@ -13,25 +13,16 @@ const App = () =>{
             
 
             <Router>
-            <Prueba />
             <Link to="/Search">Go Search!</Link>
             <Link to="/Login">Go Login!</Link>
             <Link to="/Home">Go Home!</Link>
             <Link to="/Details">Go Details!</Link>
 
             <Switch>
-                <Route exac path="/Home">
-                    <Home />
-                </Route>
-                <Route exac path="/Login">
-                    <Login />
-                </Route>
-                <Route exac path="/Search">
-                    <Search />
-                </Route>
-                <Route exac path="/Details">
-                    <Details />
-                </Route>
+                <Route exac path="/Login" component={Login} />
+                <PrivateRoute exac path="/Home" Component={Home}/>
+                <PrivateRoute exac path="/Search" Component={Search}/>
+                <PrivateRoute exac path="/Details" Component={Details} />
             </Switch>
             </Router>
             
