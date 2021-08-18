@@ -1,6 +1,7 @@
 import React from 'react';
 import { useFormik } from 'formik';
 import axios from 'axios';
+import './styles.css';
 
 const Login = () => {
 
@@ -12,39 +13,35 @@ const Login = () => {
         },
 
         onSubmit: async values => {
-            console.log(values);
+            
         const url = 'http://challenge-react.alkemy.org/';
         const response = await axios.post(url,values);
+        const token = response.data.token
+        localStorage.setItem('token',token);
+    },
 
-        console.log(response);
-        
+        validate: values =>{
+            let errors = {}
+
+            if(!values.email){
+                errors.email='El campo esta vacio';
+            }
+
+            if(!values.password){
+                errors.password='El campo esta vacio';
+            }
+
+            return errors
         }
 
     });
 
    
-
-    const OnButtonClick = () => {
-        localStorage.setItem('token', 'Mi fucking token');
-    }
-
-    const OnButtonClock = () => {
-        localStorage.removeItem('token');
-    }
-
-    const OnButtonCluck = () => {
-        const myToken = localStorage.getItem('token');
-
-        console.log(myToken);
-    }
-
-
+    
     return (
         <div>
             <h2>Aca va mi Login</h2>
-            <button onClick={() => OnButtonClick()}>Login</button>
-            <button onClick={() => OnButtonClock()}>UnLogin</button>
-            <button onClick={() => OnButtonCluck()}>Obtain</button>
+        
             <form onSubmit={formik.handleSubmit}>
                 
                 <label htmlFor='email'>email</label>
@@ -53,16 +50,21 @@ const Login = () => {
                     name='email' 
                     placeholder="email"
                     onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
                     values={formik.values.email}
                 />
+                {formik.touched.email && formik.errors.email? <div className="errorMsg">{formik.errors.email}</div> : null}
+
                 <label htmlFor='Password'>Password</label>
                 <input 
-                    type='text' 
+                    type='password' 
                     name='password' 
                     placeholder="password"
                     onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
                     values={formik.values.password}
                 />
+                {formik.touched.password && formik.errors.password? <div className="errorMsg">{formik.errors.password}</div> : null}
                 
                 <button type="submit">Submit</button>
             </form>
