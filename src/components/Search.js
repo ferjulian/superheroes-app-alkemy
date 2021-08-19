@@ -1,50 +1,39 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import { useFormik } from 'formik';
 import axios from 'axios';
+import SearchCard from './SearchCard';
 
 const Search = () =>{
 
-    const [heroesList, setHeroesList] = useState([]);
-    const [hero, setHero] = useState('');
     
-    useEffect(()=>{
-
-        const heroes = heroesList.map((heroes,index)=>{
-            return (
-                    <div>
-                    <div key={index}>
-                    <h1 >{heroes.name}</h1>
-                    <img src={heroes.image.url} alt="heroeImg"></img>
-                    </div>
-                    
-                    </div>
-                    
-                    )
-        });
-
-        setHero(heroes);
-
-    },[heroesList])
-
-
+    const [displayHeroes, setDisplayHeroes] = useState('');
+    
     const formik = useFormik({
         initialValues: {
             search: ''
             },
 
         onSubmit: async values => {
-            console.log(values.search);
+            
             const url= `https://superheroapi.com/api/4343893445701584/search/${values.search}`;
 
             const response = await axios.get(url);
             const arrayHeroes = response.data.results;
 
-            console.log(heroesList);
-
-            setHeroesList(arrayHeroes);
-            
-    }
+            const heroes = arrayHeroes.map((hero,index)=>{
+                return (
+                        <div key={index}>
+                        <SearchCard heroObj={hero}/>
+                        </div>
+                        
+                 )
+            });
+    
+            setDisplayHeroes(heroes);
+           
+        }
     });
+
 
     return(
         <div>
@@ -61,7 +50,7 @@ const Search = () =>{
             <button type="submit">Get</button>
             </form>
 
-            {hero}
+        {displayHeroes}
 
         </div>
     );
