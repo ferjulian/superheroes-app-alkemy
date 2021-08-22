@@ -18,6 +18,7 @@ const Login = () => {
         const response = await axios.post(url,values);
         const token = response.data.token
         localStorage.setItem('token',token);
+        localStorage.setItem('team', JSON.stringify([]));
     },
 
         validate: values =>{
