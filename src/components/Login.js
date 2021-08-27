@@ -1,9 +1,14 @@
 import React from 'react';
+import {Redirect} from 'react-router-dom';
 import { useFormik } from 'formik';
 import axios from 'axios';
-import './styles.css';
+import './Login.css';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faLock, faAt } from "@fortawesome/free-solid-svg-icons";
 
-const Login = () => {
+const Login = (props) => {
+
+    
 
     const formik = useFormik({
         initialValues: {
@@ -17,9 +22,15 @@ const Login = () => {
         const url = 'http://challenge-react.alkemy.org/';
         const response = await axios.post(url,values);
         const token = response.data.token
-        localStorage.setItem('token',token);
+        localStorage.setItem('token', token);
         localStorage.setItem('team', JSON.stringify([]));
-    },
+
+        if(token){
+            props.navSwitch('on');
+        }
+        
+
+         },
 
         validate: values =>{
             let errors = {}
@@ -40,36 +51,49 @@ const Login = () => {
    
     
     return (
-        <div>
-            <h2>Aca va mi Login</h2>
-        
-            <form onSubmit={formik.handleSubmit}>
-                
-                <label htmlFor='email'>email</label>
-                <input 
-                    type='email' 
-                    name='email' 
-                    placeholder="email"
-                    onChange={formik.handleChange}
-                    onBlur={formik.handleBlur}
-                    values={formik.values.email}
-                />
-                {formik.touched.email && formik.errors.email? <div className="errorMsg">{formik.errors.email}</div> : null}
+        <div className="totalContainer">
+            <div className="inner-container">
+            <div className="panel-left">
+                <h1 className="title">Superheroes</h1>
+            </div>
+            <div className="panel-right">
+                <div className="form-wrapper">
+                <form onSubmit={formik.handleSubmit}>
+                    <h2 className="login-title">Login</h2>
+                    <div className="input-wrapper">
+                    <label htmlFor='email' className="icon"><FontAwesomeIcon icon={faAt} color="rgba(255, 255, 255, 0.534)" size="2x" /></label>
+            <input 
+                type='email' 
+                name='email'
+                className="input" 
+                placeholder="email"
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                values={formik.values.email}
+            />
+                    </div>
+                    <div className="input-wrapper">
+                    <label htmlFor='Password' className="icon"><FontAwesomeIcon icon={faLock} color="rgba(255, 255, 255, 0.534)" size="2x" /></label>
+            <input 
+                type='password' 
+                name='password' 
+                placeholder="password"
+                className="input"
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                values={formik.values.password}
+            />
+                    </div>
+                    {formik.touched.email && formik.errors.email? <div className="errorMsg">{formik.errors.email}</div> : null}
+                    {formik.touched.password && formik.errors.password? <div className="errorMsg">{formik.errors.password}</div> : null}
+                    <button type="submit">Submit</button>
+                    </form>
 
-                <label htmlFor='Password'>Password</label>
-                <input 
-                    type='password' 
-                    name='password' 
-                    placeholder="password"
-                    onChange={formik.handleChange}
-                    onBlur={formik.handleBlur}
-                    values={formik.values.password}
-                />
-                {formik.touched.password && formik.errors.password? <div className="errorMsg">{formik.errors.password}</div> : null}
-                
-                <button type="submit">Submit</button>
-            </form>
-        </div>
+                </div>
+            </div>
+            </div>
+             {localStorage.getItem('token') ? <Redirect to="/Home" /> : ''}
+             </div>
     );
 }
 

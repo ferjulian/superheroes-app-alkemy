@@ -1,31 +1,42 @@
-import React from 'react';
-import {BrowserRouter as Router, Route, Switch, Link} from 'react-router-dom'
+import React, {useState} from 'react';
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import Home from './Home';
 import Login from './Login';
 import Search from './Search';
 import Details from './Details';
 import PrivateRoute from './PrivateRoute';
+import Navbar from './Navbar';
+
 
 const App = () =>{
+const [nav, setNav] = useState('');
+
+    const onButtonClick = (arg) => { 
+        if(arg === 'on'){
+            setNav(arg);
+        }
+        
+    }
+    
+
     return(
         <div>
-            <h1>Superheroes Pagina</h1>
-            
-
             <Router>
-            <Link to="/Search">Go Search!</Link>
-            <Link to="/Login">Go Login!</Link>
-            <Link to="/Home">Go Home!</Link>
-            <Link to="/Details">Go Details!</Link>
-
+            {nav === 'on' ? <Navbar /> : ''}
             <Switch>
-                <Route exac path="/Login" component={Login} />
+            
                 <PrivateRoute exac path="/Home" Component={Home}/>
                 <PrivateRoute exac path="/Search" Component={Search}/>
                 <PrivateRoute exac path="/Details" Component={Details} />
+                <Route exac path="/">
+                <Login navSwitch={onButtonClick}/>    
+                </Route>   
             </Switch>
-            </Router>
+        </Router>
             
+
+
+
         </div>
     );
 }
