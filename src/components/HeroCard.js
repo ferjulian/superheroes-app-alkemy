@@ -3,9 +3,8 @@ import {Redirect} from 'react-router-dom';
 import './HeroCard.css';
 
 
-const HeroCard = () =>{
+const HeroCard = (props) =>{
 
-    const [update, setUpdate] = useState(true);
     const[toDetails, setToDetails] = useState('');
     
      //Get from LS
@@ -71,7 +70,8 @@ const HeroCard = () =>{
          let saveTeam = JSON.stringify(newArray);
          localStorage.setItem('team', saveTeam);
  
-         setUpdate(!update);
+         
+         props.updateHome()
          
      }
 
@@ -86,7 +86,7 @@ const HeroCard = () =>{
     
 
     return(
-        <div className="row">
+        <div className="row d-flex justify-content-center">
             {team}
             {toDetails? <Redirect to={{
                 pathname: '/Details', 

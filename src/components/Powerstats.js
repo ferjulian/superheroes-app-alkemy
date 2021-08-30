@@ -1,8 +1,15 @@
 import React from 'react';
+import { Bar } from 'react-chartjs-2';
+import ChartDataLabels from 'chartjs-plugin-datalabels';
+import './Barchart.css';
 
-const Powerstats = ({team}) =>{
+const Powerstats = () =>{
 
 const powerstats = [];
+const data = localStorage.getItem('team');
+const team = JSON.parse(data);
+
+console.log(team);
 
 const toInt = (arg) =>{
     const split = arg.split(' ');
@@ -64,19 +71,61 @@ for(const [name, value] of Object.entries(totalStats)){
 
 
     return(
-        <div>
+        <div className="row">
+            <div className="col-6 left_powerstats_panel">
             <h2>Mis powerstats</h2>
-            <h2>{'Atributo Maximo: '+ nameStat}</h2>
-            <h2>{'Peso promedio: '+ totalWeight}</h2>
-            <h2>{'Altura promedio: '+ totalHeight}</h2>
-            <h3>{'Combat '+ totalStats.combat}</h3>
-            <h3>{'Intelligence '+ totalStats.intelligence}</h3>
-            <h3>{'power '+ totalStats.power}</h3>
-            <h3> {'speed '+ totalStats.speed}</h3>
-            <h3>{'strength '+ totalStats.strength}</h3>
-            <h3>{'durability '+ totalStats.durability}</h3>
+            <h5>{'Atributo Maximo: '+ nameStat}</h5>
+            <h5>{'Peso promedio: '+ Math.round(totalWeight)+' kg'}</h5>
+            <h5>{'Altura promedio: '+ Math.round(totalHeight)+' cm'}</h5>
+            </div>
+
+            <div className="barChart_container col-6">
+        <Bar 
+            plugins={[ChartDataLabels]}
+            data={{
+                labels:['Intelligence','Strength', 'Speed', 'Durability', 'Power','Combat'], 
+                datasets: [{label: 'value', 
+                            data: [totalStats.intelligence,totalStats.strength,totalStats.speed,totalStats.durability,totalStats.power,totalStats.combat], 
+                            barPercentage: 0.8, 
+                            categoryPercentage: 0.8,
+                            backgroundColor:['rgba(255, 75, 127,0.3)'],
+                            borderWidth: '2',
+                            borderColor : ['rgb(255, 75, 127)']
+                        },
+                           ]
+                
+                    }} 
+            width={150}
+            height={300} 
+            options ={{ 
+                maintainAspectRatio: false,
+                plugins: {
+                    datalabels: {
+                        color: 'white'
+                    },
+                    legend: {
+                        display:false
+                    },
+                },
+                indexAxis: 'y', 
+                scales:{
+                    x: { 
+                        grid:{ display: false},
+                        ticks:{display:false}
+                        },
+                    y:{
+                        grid:{display: false},
+                        ticks:{color:'white', 
+                                font:{
+                                    size:16,
+                                }
+                            }
+                    }
+                    },
+                        }}
             
-            
+        />
+        </div>
            
             
             

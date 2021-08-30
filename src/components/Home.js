@@ -1,6 +1,5 @@
-import React from 'react';
+import React,{useState, useEffect} from 'react';
 import HeroCard from './HeroCard';
-import BarChart from './BarChart';
 import Powerstats from './Powerstats';
 import './Home.css'
 
@@ -9,24 +8,26 @@ import './Home.css'
 
 const Home = () =>{
     
-     
+const [updateHome, setUpdateHome] = useState(false);
+
+const refresh = () =>{
+setUpdateHome(!updateHome);
+}
     
     return(
-        <div className="container-fluid myborder">
-            <div className="row myborder">
-                <h1>Mejorstat</h1>
-            </div>
-            <div className="row myborder">
-            <div className="col-7 myborder">
-            <HeroCard />
-            </div>
-            <div className="col-5 myborder">
-            <BarChart />
-            </div>
-            </div>
-            
-        
+        <div className="home_container">
+            <div className="container">
+
+<div className="myborder">
+    <h1>Your Team</h1>
+</div>
+<Powerstats />
+<HeroCard updateHome={refresh} />
+
+
+</div>
         </div>
+        
     );
 }
 

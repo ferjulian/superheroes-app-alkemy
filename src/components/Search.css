@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=PT+Serif:wght@700&display=swap');
+
+.searchBar{
+    width: 40%;
+    border-radius: 20px;
+    padding-left: 5px;
+    font-size: 1.2rem;
+    outline: none;
+    border: none;
+    box-shadow: 1px 1px 3px 1px;
+    margin-bottom: 10px;
+}
+
+.search_button{
+font-size: 1.2rem;
+width: 10%;
+border-radius: 0px;
+}
+
+.search_button:hover{
+    background-color: rgb(255, 75, 127);
+}
+
+.title_search{
+    font-family: 'PT Serif', serif;
+    font-size: 3rem;
+}
+
+.p_search{
+    font-family: 'PT Serif', serif;
+    font-size: 1.1rem;
+    color:grey;
+}

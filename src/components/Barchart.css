@@ -1,5 +1,19 @@
 .barChart_container{
     width: 100%;
-    height: 700px;
+    height: 300px;
     border: 1px solid black;
+    border-radius: 10px;
+    border: 1px solid white;
+    background: -webkit-linear-gradient(360deg,#383836 10%,#4a4a4a 360%); 
+    background: linear-gradient(360deg,#383836 10%,#4a4a4a 360%);
+}
+
+.left_powerstats_panel{
+    border-radius: 10px;
+    color: white;
+    border: 1px solid white;
+    padding: 20px;
+    margin-right: 0px;
+    background-image: url('../assets/spiderman2.jpg');
+    background-size: cover;
 }

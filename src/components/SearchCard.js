@@ -1,10 +1,12 @@
-import { faGripLinesVertical } from '@fortawesome/free-solid-svg-icons';
 import React, {useState} from 'react';
 import './styles.css';
+import './SearchCard.css';
 
 const SearchCard = ({heroObj}) =>{
 
     const [error, setError] = useState('');
+    const [success, setSuccess] = useState('');
+    const [hover, setHover] = useState('');
 
     const onButtonClick = () => {
        
@@ -18,42 +20,71 @@ const SearchCard = ({heroObj}) =>{
             let badAlignment = 0;
             let heroExist = false;
            
-            //Alignment Validation
+            //Validations
 
             team.forEach( hero =>{
+                
                 if (hero.biography.alignment === 'good'){
                     goodAlignment++
                 }else{
                     badAlignment++
                   }
                 
-                if (heroObj.name === hero.name){
+                if (heroObj.id === hero.id){
                     heroExist = true;
                 } 
 
                 });
             
-           console.log(goodAlignment);
 
             if(numHeroes < 6){
 
-                if(goodAlignment < 3 && badAlignment < 3){
+                //Repeated hero
 
-                    if( !heroExist ){
+                if( !heroExist ){
+
+                // Bad/Good Alignment validation
+
+                if(heroObj.biography.alignment === 'bad'){
+
+                    if(badAlignment < 3){
+
                         storeInLS(team,heroObj);
+                        setSuccess('Success!');
+                        setTimeout(()=>{setSuccess('')},3500)
+    
+                }else{
+                    setError('You can only enter 3 heroes with bad alignment.');
+                    setTimeout(()=>{setError('')},3500)
+                }                    
+
+                }else{
+
+                    if(goodAlignment < 3){
+
+                        storeInLS(team,heroObj);
+                        setSuccess('Success!');
+                        setTimeout(()=>{setSuccess('')},3500)
+
+                }else{
+                    setError('You can only enter 3 heroes with good alignment.');
+                    setTimeout(()=>{setError('')},3500)
+                }
+
+
+                }
+
+
                     }else{
-                        setError('Este heroe ya fue ingresado');
+                        setError('Este heroe ya fue ingresado.');
                         setTimeout(()=>{setError('')},3500)
                     }
                     
-                }else{
-                    setError('You can only enter 3 heroes with good alignment and 3 with bad alignment');
-                    setTimeout(()=>{setError('')},3500)
-                }
+                
                 
             }else{
                 
-                setError('The team is full!');
+                setError('The team is full.');
                 setTimeout(()=>{setError('')},3500)
             }
             
@@ -73,15 +104,25 @@ const SearchCard = ({heroObj}) =>{
 
     return(
         <div>
-           <div>
-                <h1 >{heroObj.name}</h1>
-                <img 
-                    src={heroObj.image.url} 
-                    alt="heroeImg"
-                />
-                <button onClick={()=> onButtonClick()}>Add</button>
+
+
+<div 
+    className="card" 
+    onMouseOver={() => setHover('hover')}
+    onMouseLeave={() => setHover('')}
+>
+  <img className="SearchCard_image" src={heroObj.image.url} alt="hero"/>
+  <div className={`card-body ${hover}`}>
+      <span>
+      <h5 className="text">{heroObj.name}</h5>
+    <button className="SearchCard_button" onClick={()=> onButtonClick()}>Add</button>
+      </span>
+    
                 <div className='errorMsg'>{error}</div>
-            </div>
+                <div className="successMsg">{success}</div>
+  </div>
+</div>
+
         </div>
     );
 }

@@ -1,3 +1,18 @@
 .myborder{
-    border: 1px solid black;
+    border: 3px solid white;;
+
 }
+
+
+.home_container{
+   
+    height: 100%;
+    width: 100%;
+    padding-bottom: 16px;
+    border: 0px;
+    background: -webkit-linear-gradient(360deg, #1C1C1C 10%, #494949 360%);
+     background: -moz-linear-gradient(360deg, #1C1C1C 10%, #494949 360%); 
+     background: linear-gradient(360deg, #1C1C1C 10%, #494949 360%);
+}
+
+

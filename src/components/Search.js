@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import { useFormik } from 'formik';
 import axios from 'axios';
 import SearchCard from './SearchCard';
+import './Search.css'
 
 const Search = () =>{
 
@@ -40,7 +41,8 @@ const Search = () =>{
             }
             
             }catch(err){
-             setApiError(`${err}`);   
+             setApiError(`${err}`);
+             setTimeout(()=>{setApiError('')},3500)   
             }
             
            
@@ -59,23 +61,26 @@ const Search = () =>{
 
 
     return(
-        <div>
-            <h2>Buscador</h2>
-            <form onSubmit={formik.handleSubmit}>
-            <label htmlFor="search">Search</label>
-            <input 
+        <div className="container-fluid">
+            <form className="mb-5"onSubmit={formik.handleSubmit}>
+            <h2 className="title_search" >Search</h2>
+            <p className="p_search">find your favorite heroes and build your team</p>
+            <input
+                className="searchBar" 
                 type="text" 
                 name="search"
-                placeholder="Busca tu heroe..."
+                placeholder="Maybe, Batman?"
                 onChange={formik.handleChange}
                 values={formik.values.search}
             />
             {formik.touched.search && formik.errors.search? <div className="errorMsg">{formik.errors.search}</div> : null}
             {apiError? <div className="errorMsg">{apiError}</div>: ''}
-            <button type="submit">Get</button>
+            <button className="search_button"type="submit">Get</button>
             </form>
-
+        <div className="row d-flex justify-content-center">
         {displayHeroes}
+        </div>
+        
 
         </div>
     );
