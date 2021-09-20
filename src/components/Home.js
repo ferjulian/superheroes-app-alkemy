@@ -1,4 +1,4 @@
-import React,{useState, useEffect} from 'react';
+import React,{useState} from 'react';
 import HeroCard from './HeroCard';
 import Powerstats from './Powerstats';
 import './Home.css'
@@ -18,7 +18,7 @@ setUpdateHome(!updateHome);
         <div className="home_container">
             <div className="container">
 
-<div className="myborder">
+<div>
     <h1>Your Team</h1>
 </div>
 <Powerstats />

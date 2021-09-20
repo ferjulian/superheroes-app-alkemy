@@ -12,7 +12,7 @@ return(
             plugins={[ChartDataLabels]}
             data={{
                 labels:['Intelligence','Strength', 'Speed', 'Durability', 'Power','Combat'], 
-                datasets: [{label: 'tu vieja', 
+                datasets: [{label: '', 
                             data: [100,50,40,30,20,66], 
                             barPercentage: 0.8, 
                             categoryPercentage: 0.8},

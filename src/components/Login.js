@@ -1,14 +1,15 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Redirect} from 'react-router-dom';
 import { useFormik } from 'formik';
 import axios from 'axios';
 import './Login.css';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLock, faAt } from "@fortawesome/free-solid-svg-icons";
+import Spinner from './Spinner';
 
 const Login = (props) => {
 
-    
+    const [loading, setLoading] = useState('');    
 
     const formik = useFormik({
         initialValues: {
@@ -18,13 +19,13 @@ const Login = (props) => {
         },
 
         onSubmit: async values => {
-            
+        setLoading(<div><Spinner /></div>)   
         const url = 'http://challenge-react.alkemy.org/';
         const response = await axios.post(url,values);
         const token = response.data.token
         localStorage.setItem('token', token);
         localStorage.setItem('team', JSON.stringify([]));
-
+       
         if(token){
             props.navSwitch('on');
         }
@@ -87,6 +88,7 @@ const Login = (props) => {
                     {formik.touched.email && formik.errors.email? <div className="errorMsg">{formik.errors.email}</div> : null}
                     {formik.touched.password && formik.errors.password? <div className="errorMsg">{formik.errors.password}</div> : null}
                     <button type="submit">Submit</button>
+                    {loading? loading : ''}
                     </form>
 
                 </div>

@@ -3,6 +3,7 @@ import { useFormik } from 'formik';
 import axios from 'axios';
 import SearchCard from './SearchCard';
 import './Search.css'
+import Spinner from './Spinner';
 
 const Search = () =>{
 
@@ -18,7 +19,7 @@ const Search = () =>{
         onSubmit: async values => {
             
             const url= `https://superheroapi.com/api/4343893445701584/search/${values.search}`;
-
+            setDisplayHeroes(<div><Spinner /></div>)
             try{
             
             const response = await axios.get(url);
@@ -36,11 +37,13 @@ const Search = () =>{
         
                 setDisplayHeroes(heroes);
             }else{
+                setDisplayHeroes('');
                 setApiError(response.data.error);
                 setTimeout(()=>{setApiError('')},3500)
             }
             
             }catch(err){
+             setDisplayHeroes('');
              setApiError(`${err}`);
              setTimeout(()=>{setApiError('')},3500)   
             }
@@ -61,7 +64,8 @@ const Search = () =>{
 
 
     return(
-        <div className="container-fluid">
+        <div className="search_container">
+            <div className="container-fluid">
             <form className="mb-5"onSubmit={formik.handleSubmit}>
             <h2 className="title_search" >Search</h2>
             <p className="p_search">find your favorite heroes and build your team</p>
@@ -81,8 +85,10 @@ const Search = () =>{
         {displayHeroes}
         </div>
         
-
+        
+    </div>
         </div>
+        
     );
 }
 

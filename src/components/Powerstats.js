@@ -9,7 +9,7 @@ const powerstats = [];
 const data = localStorage.getItem('team');
 const team = JSON.parse(data);
 
-console.log(team);
+
 
 const toInt = (arg) =>{
     const split = arg.split(' ');

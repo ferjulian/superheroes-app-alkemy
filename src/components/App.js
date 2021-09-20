@@ -19,11 +19,12 @@ const [nav, setNav] = useState('');
         
     }
     
+    const data = localStorage.getItem('team');
 
     return(
         <div>
             <Router>
-            {nav === 'on' ? <Navbar /> : ''}
+            { data ? <Navbar /> : ''}
             <Switch>
             
                 <PrivateRoute exac path="/Home" Component={Home}/>
