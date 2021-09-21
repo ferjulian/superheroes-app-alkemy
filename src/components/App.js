@@ -10,10 +10,15 @@ import Navbar from './Navbar';
 
 
 const App = () =>{
+
+    
 const [nav, setNav] = useState('');
 
     const onButtonClick = (arg) => { 
         if(arg === 'on'){
+            setNav(arg);
+            
+        }else if(arg =='off'){
             setNav(arg);
         }
         
@@ -21,10 +26,11 @@ const [nav, setNav] = useState('');
     
     const data = localStorage.getItem('team');
 
+    
     return(
         <div>
             <Router>
-            { data ? <Navbar /> : ''}
+            { data ? <Navbar navSwitch={onButtonClick} /> : ''}
             <Switch>
             
                 <PrivateRoute exac path="/Home" Component={Home}/>

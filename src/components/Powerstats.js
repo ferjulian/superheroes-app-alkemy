@@ -73,10 +73,10 @@ for(const [name, value] of Object.entries(totalStats)){
     return(
         <div className="row">
             <div className="col-6 left_powerstats_panel">
-            <h2>Mis powerstats</h2>
-            <h5>{'Atributo Maximo: '+ nameStat}</h5>
-            <h5>{'Peso promedio: '+ Math.round(totalWeight)+' kg'}</h5>
-            <h5>{'Altura promedio: '+ Math.round(totalHeight)+' cm'}</h5>
+            <h2>My powerstats</h2>
+            <h4>{nameStat? 'High spot: '+ nameStat : ''}</h4>
+            <h5>{totalWeight? 'Average team weight: '+ Math.round(totalWeight) +' kg' : ''}</h5>
+            <h5>{totalHeight? 'Average team height: '+ Math.round(totalHeight)+' cm' : 'You don\'t have any superheroes yet!'}</h5>
             </div>
 
             <div className="barChart_container col-6">
@@ -85,7 +85,8 @@ for(const [name, value] of Object.entries(totalStats)){
             data={{
                 labels:['Intelligence','Strength', 'Speed', 'Durability', 'Power','Combat'], 
                 datasets: [{label: 'value', 
-                            data: [totalStats.intelligence,totalStats.strength,totalStats.speed,totalStats.durability,totalStats.power,totalStats.combat], 
+                            data: [totalStats.intelligence,totalStats.strength,totalStats.speed,totalStats.durability,totalStats.power,totalStats.combat]
+                            ,
                             barPercentage: 0.8, 
                             categoryPercentage: 0.8,
                             backgroundColor:['rgba(255, 75, 127,0.3)'],

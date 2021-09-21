@@ -6,6 +6,9 @@ import './Login.css';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLock, faAt } from "@fortawesome/free-solid-svg-icons";
 import Spinner from './Spinner';
+require('dotenv').config();
+
+
 
 const Login = (props) => {
 
@@ -20,7 +23,7 @@ const Login = (props) => {
 
         onSubmit: async values => {
         setLoading(<div><Spinner /></div>)   
-        const url = 'http://challenge-react.alkemy.org/';
+        const url = `${process.env.REACT_APP_API_ALKEMY}`;
         const response = await axios.post(url,values);
         const token = response.data.token
         localStorage.setItem('token', token);

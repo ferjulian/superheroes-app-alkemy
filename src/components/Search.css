@@ -2,13 +2,12 @@
 
 .search_container{
    
-    height: 100vh;
+    height: 100%;
     width: 100%;
     padding-bottom: 16px;
     border: 0px;
-    background: -webkit-linear-gradient(360deg, #1C1C1C 10%, #494949 360%);
-     background: -moz-linear-gradient(360deg, #1C1C1C 10%, #494949 360%); 
-     background: linear-gradient(360deg, #1C1C1C 10%, #494949 360%);
+    
+    
 }
 
 .searchBar{
@@ -46,6 +45,6 @@ border-radius: 0px;
 }
 
 form{
-    margin-top: 55px;
-    border:none;
+border: none;
+margin-top: 55px;
 }

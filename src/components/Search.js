@@ -4,6 +4,7 @@ import axios from 'axios';
 import SearchCard from './SearchCard';
 import './Search.css'
 import Spinner from './Spinner';
+require('dotenv').config();
 
 const Search = () =>{
 
@@ -18,7 +19,7 @@ const Search = () =>{
 
         onSubmit: async values => {
             
-            const url= `https://superheroapi.com/api/4343893445701584/search/${values.search}`;
+            const url= `https://superheroapi.com/api/${process.env.REACT_APP_API_KEY}/search/${values.search}`;
             setDisplayHeroes(<div><Spinner /></div>)
             try{
             

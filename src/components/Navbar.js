@@ -1,9 +1,18 @@
-import React from 'react';
-import {Link} from 'react-router-dom';
+import React,{useState} from 'react';
+import {Link, Redirect} from 'react-router-dom';
 import './Navbar.css';
 
 
-const Navbar = () =>{
+const Navbar = (props) =>{
+
+const [loginPage, setLoginPage] = useState(false);
+
+const onButtonClick = () => {
+  localStorage.removeItem('team');
+  localStorage.removeItem('token');
+  setLoginPage(!loginPage);
+  props.navSwitch('off');
+}
 
 
 return(
@@ -13,7 +22,10 @@ return(
     <a className="navbar-brand" href="#">Superheroes</a>
       <Link to="/Home">Home</Link>
       <Link to="/Search">Search</Link>
+      <button onClick={() => onButtonClick()}>Sign out</button>
     </nav>
+
+    {loginPage == true? <Redirect to="/Login"/> : ''}
             
     </div>
     
