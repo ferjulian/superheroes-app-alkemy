@@ -50,7 +50,7 @@ const SearchCard = ({heroObj}) =>{
                     if(badAlignment < 3){
 
                         storeInLS(team,heroObj);
-                        setSuccess('Success!');
+                        setSuccess('Success');
                         setTimeout(()=>{setSuccess('')},3500)
     
                 }else{
@@ -63,7 +63,7 @@ const SearchCard = ({heroObj}) =>{
                     if(goodAlignment < 3){
 
                         storeInLS(team,heroObj);
-                        setSuccess('Success!');
+                        setSuccess('Success');
                         setTimeout(()=>{setSuccess('')},3500)
 
                 }else{
@@ -76,7 +76,7 @@ const SearchCard = ({heroObj}) =>{
 
 
                     }else{
-                        setError('Este heroe ya fue ingresado.');
+                        setError('This hero is already on your team.');
                         setTimeout(()=>{setError('')},3500)
                     }
                     

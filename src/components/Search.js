@@ -55,7 +55,7 @@ const Search = () =>{
             let errors = {}
 
             if(!values.search){
-                errors.search='El campo esta vacio';
+                errors.search='The field is empty';
             }
 
             return errors

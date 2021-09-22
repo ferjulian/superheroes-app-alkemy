@@ -18,7 +18,7 @@ const [nav, setNav] = useState('');
         if(arg === 'on'){
             setNav(arg);
             
-        }else if(arg =='off'){
+        }else if(arg === 'off'){
             setNav(arg);
         }
         

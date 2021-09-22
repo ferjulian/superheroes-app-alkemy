@@ -28,6 +28,7 @@ const HeroCard = (props) =>{
     
 </div>
 <table>
+<tbody>
   <tr>
     <th>{myHero.powerstats.power}</th>
     <th>{myHero.powerstats.strength}</th>
@@ -48,6 +49,7 @@ const HeroCard = (props) =>{
     <td>Intel.</td>
     <td>Combat</td>
   </tr>
+  </tbody>
 </table>
 
     </div>
@@ -64,7 +66,7 @@ const HeroCard = (props) =>{
      
 
          const newArray = arrTeam.filter((myHero)=>{
-             return myHero.name !== obj.name;
+             return myHero.id !== obj.id;
          });
          
          let saveTeam = JSON.stringify(newArray);

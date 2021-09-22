@@ -1,21 +1,18 @@
 import React from 'react';
-import { useLocation} from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
+import DetailsInfo from './DetailsInfo';
+
 
 
 const Details = (props) =>{
 
     const location = useLocation()
 
-
     return(
-        <div>
-            <h2>Detalles del heroe</h2>
+        <div className="wrapper">
 
-            {location.state? <h5>{location.state.hero.name}</h5> : <h5>Todavia no selecionaste ningun heroe</h5> }
+            {location.state? <DetailsInfo/> : <h5>You haven't selected any hero yet.</h5> }    
             
-           
-            
-
         </div>
     );
 }

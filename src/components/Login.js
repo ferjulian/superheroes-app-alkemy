@@ -13,6 +13,7 @@ require('dotenv').config();
 const Login = (props) => {
 
     const [loading, setLoading] = useState('');    
+    const [connectionErr, setConnectionErr] = useState('');    
 
     const formik = useFormik({
         initialValues: {
@@ -22,8 +23,10 @@ const Login = (props) => {
         },
 
         onSubmit: async values => {
-        setLoading(<div><Spinner /></div>)   
-        const url = `${process.env.REACT_APP_API_ALKEMY}`;
+        setLoading(<div><Spinner /></div>)
+        setTimeout(()=>{setLoading('')},3500);
+        try{
+            const url = `${process.env.REACT_APP_API_ALKEMY}`;
         const response = await axios.post(url,values);
         const token = response.data.token
         localStorage.setItem('token', token);
@@ -32,6 +35,12 @@ const Login = (props) => {
         if(token){
             props.navSwitch('on');
         }
+        }catch (err){
+            setLoading('');
+            setConnectionErr('check your username and password');
+            setTimeout(()=>{setConnectionErr('')},3500);
+        }   
+        
         
 
          },
@@ -40,11 +49,11 @@ const Login = (props) => {
             let errors = {}
 
             if(!values.email){
-                errors.email='El campo esta vacio';
+                errors.email='The field is empty';
             }
 
             if(!values.password){
-                errors.password='El campo esta vacio';
+                errors.password='The field is empty';
             }
 
             return errors
@@ -90,6 +99,7 @@ const Login = (props) => {
                     </div>
                     {formik.touched.email && formik.errors.email? <div className="errorMsg">{formik.errors.email}</div> : null}
                     {formik.touched.password && formik.errors.password? <div className="errorMsg">{formik.errors.password}</div> : null}
+                    {connectionErr? <div className="errorMsg">{connectionErr}</div> : ''}
                     <button type="submit">Submit</button>
                     {loading? loading : ''}
                     </form>

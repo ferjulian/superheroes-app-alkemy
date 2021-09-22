@@ -7,18 +7,14 @@ body{
      background: linear-gradient(360deg, #1C1C1C 10%, #494949 360%);
 }
 
-html{
-    height: 100%;
-}
 
-/*.home_container{
-   
-    height: 100vh;
+
+.home_container{
     width: 100%;
     padding-bottom: 16px;
-    margin-top: 25px;
+    margin-top: 10px;
     
      
 }
-*/
+
 

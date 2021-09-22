@@ -25,7 +25,7 @@ return(
       <button onClick={() => onButtonClick()}>Sign out</button>
     </nav>
 
-    {loginPage == true? <Redirect to="/Login"/> : ''}
+    {loginPage === true? <Redirect to="/Login"/> : ''}
             
     </div>
     
