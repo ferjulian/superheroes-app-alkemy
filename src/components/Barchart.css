@@ -1,19 +1,42 @@
 .barChart_container{
-    width: 100%;
+    width: 45%;
     height: 300px;
     border: 1px solid black;
     border-radius: 10px;
     border: 1px solid white;
+    margin-left: 2px;
     background: -webkit-linear-gradient(360deg,#383836 10%,#4a4a4a 360%); 
     background: linear-gradient(360deg,#383836 10%,#4a4a4a 360%);
 }
 
 .left_powerstats_panel{
+    width:45%;
     border-radius: 10px;
     color: white;
     border: 1px solid white;
     padding: 20px;
-    margin-right: 0px;
+    margin-right: 2px;
     background-image: url('../assets/spiderman2.jpg');
     background-size: cover;
+    font-family: 'Berkshire Swash', cursive;
+}
+
+.mt-5{
+padding: 14px;
+}
+
+@media (max-width: 768px){
+
+    .barChart_container{
+        width: 100%;
+        height: 50%;
+        margin-top: 8px;
+    }
+
+    .left_powerstats_panel{
+        width: 100%;
+        height: 50%;
+        text-align: center;
+    }
+
 }

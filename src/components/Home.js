@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React, { useState } from 'react';
 import HeroCard from './HeroCard';
 import Powerstats from './Powerstats';
 import './Home.css'
@@ -6,28 +6,22 @@ import './Home.css'
 
 
 
-const Home = () =>{
-    
-const [updateHome, setUpdateHome] = useState(false);
+const Home = () => {
 
-const refresh = () =>{
-setUpdateHome(!updateHome);
-}
-    
-    return(
-        <div className="home_container">
+    const [updateHome, setUpdateHome] = useState(false);
+
+    const refresh = () => {
+        setUpdateHome(!updateHome);
+    }
+
+    return (
+        <div className="home_container min-vh-100  d-flex  flex-column align-items-center flex-wrap">
             <div className="container">
-
-<div>
-    <h1>Your Team</h1>
-</div>
-<Powerstats />
-<HeroCard updateHome={refresh} />
-
-
-</div>
+                <Powerstats />
+                <HeroCard updateHome={refresh} />
+            </div>
         </div>
-        
+
     );
 }
 

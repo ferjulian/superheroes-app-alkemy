@@ -89,7 +89,8 @@ const HeroCard = (props) =>{
 
     return(
         <div className="row d-flex justify-content-center">
-            {team}
+            {console.log(team.length)}
+            {team.length === 0? <div className="empty_team blink_me"><h1>Build your team</h1><h5>click on search</h5></div> : team}
             {toDetails? <Redirect to={{
                 pathname: '/Details', 
                 state: {hero: toDetails}

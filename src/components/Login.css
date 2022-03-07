@@ -15,7 +15,7 @@ body{
 .inner-container {
     display: flex;
     flex-direction: row;
-    background-color: rgba(0, 0, 0, 0.425);
+    background-color: rgba(0, 0, 0, 0.7);
     height: 100vh;
 }
 
@@ -25,12 +25,18 @@ body{
     align-items: flex-start;
     width: 50%;
 }
+
+/*Panel Right*/
+
 .panel-right{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 1px solid white;
     width: 50%;
+    
+}
+
+.login-title{
+color: white;
+font-size: 3rem;
+font-family: 'Suez One', serif;
 }
 
 .form-wrapper{
@@ -38,25 +44,23 @@ body{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 70%;
+    width: 100%;
     height: 70%;
-    border: 1px solid white;
+    border-left: 1px solid white;
 }
 
-form{
-   display: flex;
-   flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-    border: 1px solid white;
-}
+.custom_form{
+    display: flex;
+    flex-direction: column;
+     justify-content: center;
+     align-items: center;
+     width: 70%;
+     height: 100%;
+ }
 
 .input-wrapper{
     display:flex;
     justify-content: flex-end;
-    
     width: 70%;
     height: 7%;
     margin-bottom: 8px;
@@ -73,9 +77,10 @@ form{
     font-family: 'Suez One', serif;
     color: white;
     font-size: 1.5rem;
-    padding-left: 1 0px;
+    margin-bottom: 2rem;
 
 }
+
 
 .icon{
     position: relative;
@@ -85,16 +90,122 @@ form{
 
 /* Panel left*/
 
+
+.intro {
+    color: rgb(255, 255, 255);
+    border-radius: 10%;
+    overflow: hidden;
+}
+
+.description {
+    font-size: 1.2rem;
+    margin-top: 1rem;
+    padding-left: 2rem;
+    padding-right: 0.5rem;
+    font-size: 1.6rem;
+}
+
+.firm{
+    color:rgba(240, 248, 255, 0.281);
+    font-size: 1rem;
+}
+
 .title{
-    color: rgba(255, 255, 255, 0.534);
+    
     font-family: 'Berkshire Swash', cursive;
-    font-size:2rem;
-    margin-left: 15px;
+    font-size:5rem;
 
 }
 
-.login-title{
-color: white;
-font-size: 2rem;
-font-family: 'Suez One', serif;
+.mobile_title{
+    display:none;
+    font-family: 'Berkshire Swash', cursive;
+    font-size:3rem;
+    color: white;
+}
+
+
+@media(max-width:1100px){
+
+    .description{
+        font-size: 1.4rem;
+    }
+
+    .title{
+        font-size:4rem;
+    }
+}
+
+@media (max-width: 992px){
+
+    .totalContainer{
+        background-image: url('../assets/ironmanMD.jpg');
+        background-size: cover;
+    }
+    .inner-container{
+        display: flex;
+        width: 100%;
+    }
+
+    .panel-right{
+        width: 100%;
+    }
+    .login-title{
+        color: white;
+        font-size: 2rem;
+        font-family: 'Suez One', serif;
+        }
+        
+        .input-wrapper{
+            display:flex;
+            justify-content: flex-end;
+            width: 70%;
+            height: 7%;
+            margin-bottom: 8px;
+            font-size: 0.4rem;
+        }
+
+        .form-wrapper{
+            border: 0px;
+        }
+
+        .custom_form {
+            justify-content: flex-start;
+        }
+
+        
+        .input{
+            background-color:rgba(240, 248, 255, 0);
+            border-style: none;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.534);
+            width: 80%;
+            height: 100%;
+            outline: none;
+            font-family: 'Suez One', serif;
+            color: white;
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+        
+        }
+        
+        .icon{
+            position: relative;
+            top: 10px;
+            right: 10px;
+        }
+    
+        .mobile_title{
+            display: block;
+        }
+}
+
+@media (max-width: 500px){
+
+    .input{
+        width:100%;
+    }
+
+    .custom_form{
+        width: 100%;
+    }
 }

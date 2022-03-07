@@ -66,12 +66,20 @@ const Login = (props) => {
     return (
         <div className="totalContainer">
             <div className="inner-container">
-            <div className="panel-left">
+            <div className="panel-left d-none d-lg-flex align-items-center justify-content-center ">
+                
+                <div className="intro w-75 h-50 d-flex flex-column align-items-center justify-content-center  ">
                 <h1 className="title">Superheroes</h1>
+                    <p className="description">
+                    Superheroes is a website that allows you to manage your own team of heroes. You can view his biography, stats and much more.
+                    </p>
+                    <a class="firm" href="https://github.com/ferjulian">Created by Fernando Julian</a>
+                </div>
             </div>
-            <div className="panel-right">
+            <div className="panel-right d-flex align-items-center justify-content-center ">
                 <div className="form-wrapper">
-                <form onSubmit={formik.handleSubmit}>
+                    <h3 className="mobile_title">Superheroes</h3>
+                <form className="custom_form" onSubmit={formik.handleSubmit}>
                     <h2 className="login-title">Login</h2>
                     <div className="input-wrapper">
                     <label htmlFor='email' className="icon"><FontAwesomeIcon icon={faAt} color="rgba(255, 255, 255, 0.534)" size="2x" /></label>
@@ -113,3 +121,5 @@ const Login = (props) => {
 }
 
 export default Login;
+
+
