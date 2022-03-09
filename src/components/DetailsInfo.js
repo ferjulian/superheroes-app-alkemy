@@ -10,7 +10,7 @@ const DetailsInfo = (props) =>{
     
 
     return(
-        <div className="container containerr">
+        <div className="containerr">
             <div className="wrapper">
             <div className="info-wrapper">
             <div className="inner">
