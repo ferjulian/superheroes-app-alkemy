@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/superheroes-app-alkemy/static/css/main.cd7f1ba0.chunk.css",
+    "main.js": "/superheroes-app-alkemy/static/js/main.f2f7584e.chunk.js",
+    "main.js.map": "/superheroes-app-alkemy/static/js/main.f2f7584e.chunk.js.map",
+    "runtime-main.js": "/superheroes-app-alkemy/static/js/runtime-main.96114ff6.js",
+    "runtime-main.js.map": "/superheroes-app-alkemy/static/js/runtime-main.96114ff6.js.map",
+    "static/js/2.f5b5eb26.chunk.js": "/superheroes-app-alkemy/static/js/2.f5b5eb26.chunk.js",
+    "static/js/2.f5b5eb26.chunk.js.map": "/superheroes-app-alkemy/static/js/2.f5b5eb26.chunk.js.map",
+    "index.html": "/superheroes-app-alkemy/index.html",
+    "static/css/main.cd7f1ba0.chunk.css.map": "/superheroes-app-alkemy/static/css/main.cd7f1ba0.chunk.css.map",
+    "static/js/2.f5b5eb26.chunk.js.LICENSE.txt": "/superheroes-app-alkemy/static/js/2.f5b5eb26.chunk.js.LICENSE.txt",
+    "static/media/Login.css": "/superheroes-app-alkemy/static/media/ironmanMD.f0ef3207.jpg",
+    "static/media/Barchart.css": "/superheroes-app-alkemy/static/media/spiderman2.cc73eddb.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.96114ff6.js",
+    "static/js/2.f5b5eb26.chunk.js",
+    "static/css/main.cd7f1ba0.chunk.css",
+    "static/js/main.f2f7584e.chunk.js"
+  ]
+}
