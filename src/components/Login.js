@@ -28,6 +28,7 @@ const Login = (props) => {
         try{
             const url = `${process.env.REACT_APP_API_ALKEMY}`;
         const response = await axios.post(url,values);
+        console.log(response);
         const token = response.data.token
         localStorage.setItem('token', token);
         localStorage.setItem('team', JSON.stringify([]));
